@@ -5,3 +5,19 @@ body {
   font-family: $font-family;
   color: $font-default-color;
 }
+
+.custom-scrollbar {
+  scrollbar-color: #ddd #0000;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #0000;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ddd;
+  }
+}
