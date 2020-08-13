@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    // TODO
+    <room-list />
+    <room-map />
   </div>
 </template>
 
 <script>
-export default {}
 </script>
 
 <style>
