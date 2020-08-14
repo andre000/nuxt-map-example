@@ -7,8 +7,8 @@
         <l-marker-cluster>
           <l-marker v-for="point in marks" :key="point.id" :lat-lng="point.latLng" @click="$emit('mark-selected', point.id)">
             <l-popup>
-              <div class="map__popup">
-                <img src="https://loremflickr.com/320/320">
+              <div class="map__popup" @click="$router.push(`room/${point.id }`)">
+                <img loading="lazy" :src="`https://loremflickr.com/320/320/bedroom,city?random=${Number(Math.random() * 100).toFixed(0)}`">
                 <span class="map__popup__title">{{ point.name }}</span>
                 <span class="map__popup__price">{{ Number(point.price).toLocaleString('en', { style: 'currency', currency: 'USD'}) }} / day</span>
               </div>
@@ -34,7 +34,7 @@ export default {
 
   computed: {
     marks () {
-      return this.paginatedRooms?.map(r => ({
+      return this.paginatedRooms.map(r => ({
         id: r.id,
         latLng: [r.latitude, r.longitude],
         price: r.price,
@@ -59,6 +59,7 @@ export default {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    cursor: pointer;
 
     img {
       width: 50px;

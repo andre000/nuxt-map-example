@@ -1,7 +1,7 @@
 <template>
-  <div class="card">
+  <div class="card" v-on="$listeners">
     <div class="card__media">
-      <img loading="lazy" src="https://loremflickr.com/320/320" alt="Room Photo">
+      <img loading="lazy" :src="`https://loremflickr.com/320/320/bedroom,city?random=${Number(Math.random() * 100).toFixed(0)}`" alt="Room Photo">
     </div>
     <div class="card__body">
       <div class="card__body__title">
