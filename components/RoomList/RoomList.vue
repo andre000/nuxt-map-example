@@ -6,7 +6,7 @@
 
     <div class="list__body custom-scrollbar">
       <client-only>
-        <base-card v-for="r in paginatedRooms" :key="r.id" :title="r.name" />
+        <room-card v-for="r in paginatedRooms" :key="r.id" :room="r" />
         <infinite-loading @infinite="infiniteHandler" />
       </client-only>
     </div>
@@ -42,10 +42,16 @@ export default {
 .list {
   background: #fff;
   padding: 5rem 5rem 0rem 5rem;
-  width: 33vw;
   height: calc(100vh - 5rem);
-  z-index: $layer-foreground;
-  position: absolute;
+
+  @media screen and (max-width: 1440px) {
+    padding: 5rem 1rem 0rem 2rem;
+  }
+
+  @media #{$screen-xs} {
+    padding: 1rem 1rem 0rem 2rem;
+    height: calc(60vh - 5rem);
+  }
 
   h1 {
     font-weight: 900;
