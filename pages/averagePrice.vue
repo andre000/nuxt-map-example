@@ -2,9 +2,9 @@
   <div class="average">
     <div class="average__title">
       <h1>Average price by Neighbourhood</h1>
-      <span class="subtitle">
-        New York / NY
-      </span>
+      <nuxt-link class="average__title__back" to="/">
+        <arrow-left-icon /> return to home
+      </nuxt-link>
     </div>
     <div class="average__body">
       <div v-for="nb in averageGrouped" :key="nb.neighbourhood_group" class="average__body__card">
@@ -23,7 +23,12 @@
 <script>
 /* eslint-disable camelcase */
 import { mapState } from 'vuex'
+import { ArrowLeftIcon } from 'vue-feather-icons'
+
 export default {
+  components: {
+    ArrowLeftIcon
+  },
   computed: {
     averageGrouped () {
       return this.averagePrice.reduce((t, d) => {
@@ -54,8 +59,14 @@ export default {
     h1 {
       margin-bottom: 5px;
     }
-    .subtitle {
-      color: #777;
+    &__back {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      svg {
+        margin-right: 5px;
+      }
     }
   }
 

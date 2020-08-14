@@ -3,6 +3,9 @@
     <h1 class="list__title">
       Room List
     </h1>
+    <nuxt-link class="list__link" to="/AveragePrice">
+      <arrow-right-icon /> see average by neighbourhood
+    </nuxt-link>
 
     <div class="list__body custom-scrollbar">
       <client-only>
@@ -19,11 +22,13 @@
 </template>
 
 <script>
+import { ArrowRightIcon } from 'vue-feather-icons'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
-    infiniteLoading: () => process.browser && import('vue-infinite-loading')
+    infiniteLoading: () => process.browser && import('vue-infinite-loading'),
+    ArrowRightIcon
   },
 
   computed: {
@@ -48,6 +53,21 @@ export default {
   background: #fff;
   padding: 5rem 5rem 0rem 5rem;
   height: calc(100vh - 5rem);
+
+  &__title {
+    margin-bottom: 5px;
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 1em;
+    svg {
+      margin-right: 5px;
+    }
+  }
 
   @media screen and (max-width: 1440px) {
     padding: 5rem 1rem 0rem 2rem;
