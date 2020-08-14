@@ -6,7 +6,12 @@
 
     <div class="list__body custom-scrollbar">
       <client-only>
-        <room-card v-for="r in paginatedRooms" :key="r.id" :room="r" />
+        <room-card
+          v-for="r in paginatedRooms"
+          :key="r.id"
+          :room="r"
+          @click="$router.push(`room/${r.id}`)"
+        />
         <infinite-loading @infinite="infiniteHandler" />
       </client-only>
     </div>
